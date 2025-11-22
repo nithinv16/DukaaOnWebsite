@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
           success: false,
           error: 'Too many requests. Please try again later.',
         },
-        { 
+        {
           status: 429,
           headers: CacheControl.rateLimit(60),
         }
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
           error: 'Validation failed',
           errors: validationResult.errors,
         },
-        { 
+        {
           status: 400,
           headers: CacheControl.noStore(),
         }
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Prepare insert data - only include fields that have values
-    const insertData: any = {
+    const insertData: Record<string, any> = {
       visitor_name: sanitizedData.visitorName,
       visitor_email: sanitizedData.email,
       visitor_phone: sanitizedData.phone,
@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
     if (sanitizedData.sellerId) {
       insertData.seller_id = sanitizedData.sellerId;
     }
-    
+
     if (sanitizedData.stakeholderType) {
       insertData.stakeholder_type = sanitizedData.stakeholderType;
     }
@@ -128,7 +128,7 @@ export async function POST(request: NextRequest) {
           success: false,
           error: 'Failed to submit enquiry. Please try again.',
         },
-        { 
+        {
           status: 500,
           headers: CacheControl.noStore(),
         }
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
           enquiryId: data.id,
         },
       },
-      { 
+      {
         status: 201,
         headers: CacheControl.noStore(),
       }
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
         success: false,
         error: 'An unexpected error occurred. Please try again.',
       },
-      { 
+      {
         status: 500,
         headers: CacheControl.noStore(),
       }
@@ -175,7 +175,7 @@ export async function GET(_request: NextRequest) {
       success: false,
       error: 'Method not implemented',
     },
-    { 
+    {
       status: 501,
       headers: CacheControl.noStore(),
     }
