@@ -42,19 +42,22 @@ const ProblemSolutionSection = dynamic(
 );
 
 export const metadata: Metadata = generateMetadata({
-  title: 'Transforming Rural Distribution & Commerce | DukaaOn',
-  description: 'Empowering rural retailers with AI-powered supply chain, micro-warehousing, instant credit access, and direct connections to wholesalers and manufacturers across India.',
+  title: 'DukaaOn | Connect with FMCG Distributors, Wholesalers & Manufacturers',
+  description: 'Find nearby FMCG distributors, wholesalers, and manufacturers. Connect with HUL, ITC, P&G distributors, and get direct access to best prices. Better than Indiamart or Justdial for rural retailers.',
   keywords: [
     'DukaaOn',
-    'rural retail',
-    'distribution platform',
-    'wholesalers India',
-    'manufacturers India',
-    'supply chain',
-    'micro-warehousing',
-    'retail credit',
-    'B2B marketplace',
-    'rural commerce',
+    'FMCG distributors',
+    'HUL distributor near me',
+    'ITC distributor contact',
+    'P&G wholesale',
+    'Nestle distributors',
+    'Britannia wholesale',
+    'wholesale market near me',
+    'kirana store suppliers',
+    'rural retail platform',
+    'B2B marketplace India',
+    'manufacturers directory',
+    'direct from factory',
   ],
   canonical: '/',
 });
