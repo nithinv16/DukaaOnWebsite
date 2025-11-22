@@ -2,8 +2,9 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { staggerContainer, staggerItem, hoverLift } from '@/components/animations/variants';
+import { staggerContainer, staggerItem } from '@/components/animations/variants';
 import { Heading } from '@/components/ui/Typography/Heading';
+import { CheckCircle2 } from 'lucide-react';
 
 interface Feature {
   icon: string;
@@ -98,28 +99,28 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-b from-neutral-light to-white">
+    <section ref={ref} className="py-32 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <motion.div variants={staggerItem}>
-            <span className="inline-block px-4 py-2 bg-secondary-blue/10 rounded-full text-secondary-blue text-sm font-medium mb-4">
+          <motion.div variants={staggerItem} className="flex justify-center mb-4">
+            <span className="px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-semibold tracking-wide uppercase">
               Platform Features
             </span>
           </motion.div>
 
           <motion.div variants={staggerItem}>
-            <Heading as="h2" className="mb-6">
+            <Heading as="h2" className="mb-6 text-4xl md:text-5xl font-bold text-neutral-900">
               Everything You Need to Succeed
             </Heading>
           </motion.div>
 
-          <motion.p variants={staggerItem} className="text-xl text-primary-gray max-w-3xl mx-auto">
-            Comprehensive tools and services designed specifically for rural retail ecosystems
+          <motion.p variants={staggerItem} className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+            Comprehensive tools and services designed specifically for rural retail ecosystems, powered by advanced AI.
           </motion.p>
         </motion.div>
 
@@ -134,55 +135,38 @@ export function FeaturesSection() {
             <motion.div
               key={index}
               variants={staggerItem}
-              whileHover="hover"
-              className="group relative"
+              whileHover={{ y: -8 }}
+              className="group relative bg-white rounded-3xl p-8 shadow-soft hover:shadow-hard transition-all duration-300 border border-neutral-100"
             >
-              <motion.div
-                variants={hoverLift}
-                className="h-full bg-white rounded-2xl p-8 border border-neutral-medium/20 shadow-md transition-all duration-300"
-              >
-                {/* Icon with gradient background */}
-                <div className="relative mb-6">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity`} />
-                  <div className={`relative w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center text-3xl shadow-lg`}>
-                    {feature.icon}
-                  </div>
+              {/* Icon with gradient background */}
+              <div className="relative mb-8">
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity duration-500`} />
+                <div className={`relative w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
                 </div>
+              </div>
 
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-primary-dark mb-3 group-hover:text-primary-orange transition-colors">
-                  {feature.title}
-                </h3>
+              {/* Content */}
+              <h3 className="text-2xl font-bold text-neutral-900 mb-4 group-hover:text-primary transition-colors">
+                {feature.title}
+              </h3>
 
-                <p className="text-primary-gray mb-6 leading-relaxed">
-                  {feature.description}
-                </p>
+              <p className="text-neutral-600 mb-8 leading-relaxed">
+                {feature.description}
+              </p>
 
-                {/* Benefits list */}
-                <ul className="space-y-2">
-                  {feature.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-primary-gray">
-                      <svg
-                        className="w-5 h-5 text-secondary-green flex-shrink-0 mt-0.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Benefits list */}
+              <ul className="space-y-3">
+                {feature.benefits.map((benefit, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm text-neutral-600 group-hover:text-neutral-900 transition-colors">
+                    <CheckCircle2 className={`w-5 h-5 flex-shrink-0 mt-0.5 bg-gradient-to-br ${feature.gradient} text-white rounded-full p-0.5`} />
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
 
-                {/* Hover effect overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity pointer-events-none`} />
-              </motion.div>
+              {/* Hover effect overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-[0.03] rounded-3xl transition-opacity duration-300 pointer-events-none`} />
             </motion.div>
           ))}
         </motion.div>
@@ -192,24 +176,25 @@ export function FeaturesSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-24 text-center"
         >
-          <p className="text-lg text-primary-gray mb-6">
-            Ready to transform your retail business?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/marketplace"
-              className="inline-flex items-center justify-center px-8 py-3 bg-primary-orange text-white rounded-lg font-medium hover:bg-primary-orange/90 transition-colors"
-            >
-              Explore Marketplace
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary-orange text-primary-orange rounded-lg font-medium hover:bg-primary-orange hover:text-white transition-colors"
-            >
-              Contact Sales
-            </a>
+          <div className="inline-flex flex-col items-center p-8 rounded-3xl bg-neutral-900 text-white shadow-2xl">
+            <h3 className="text-2xl font-bold mb-2">Ready to transform your retail business?</h3>
+            <p className="text-neutral-400 mb-8">Join thousands of retailers already growing with DukaaOn.</p>
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <a
+                href="/marketplace"
+                className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-light transition-all hover:scale-105"
+              >
+                Explore Marketplace
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-3 border border-white/20 text-white rounded-xl font-medium hover:bg-white/10 transition-all hover:scale-105"
+              >
+                Contact Sales
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

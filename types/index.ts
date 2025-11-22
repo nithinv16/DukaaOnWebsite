@@ -18,6 +18,8 @@ export interface Seller {
   location: Location;
   categories: string[];
   thumbnailImage?: string;
+  rating?: number;
+  reviewCount?: number;
   description?: string;
   distance?: number;
 }

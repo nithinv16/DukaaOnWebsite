@@ -16,7 +16,7 @@ const FeaturesSection = dynamic(
 
 const NearbySellersSection = dynamic(
   () => import('@/components/home').then(mod => ({ default: mod.NearbySellersSection })),
-  { 
+  {
     ssr: false,
     loading: () => (
       <div className="py-16 bg-neutral-light">
@@ -42,7 +42,7 @@ const ProblemSolutionSection = dynamic(
 );
 
 export const metadata: Metadata = generateMetadata({
-  title: 'DukaaOn - Tech-Enabled Distribution Platform for Rural India',
+  title: 'Transforming Rural Distribution & Commerce | DukaaOn',
   description: 'Empowering rural retailers with AI-powered supply chain, micro-warehousing, instant credit access, and direct connections to wholesalers and manufacturers across India.',
   keywords: [
     'DukaaOn',
@@ -65,21 +65,21 @@ export default function Home() {
       <HeroSection />
       <ValuePropositionSection />
       <FeaturesSection />
-      
+
       {/* Nearby Wholesalers Section */}
       <NearbySellersSection
         businessType="wholesaler"
         title="Nearby Wholesalers"
         description="Connect with trusted wholesalers in your area for competitive prices and reliable supply"
       />
-      
+
       {/* Nearby Manufacturers Section */}
       <NearbySellersSection
         businessType="manufacturer"
         title="Nearby Manufacturers"
         description="Source directly from manufacturers near you for better margins and quality products"
       />
-      
+
       <StakeholderBenefitsSection />
       <ProblemSolutionSection />
     </PageLayout>

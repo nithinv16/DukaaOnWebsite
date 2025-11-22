@@ -7,6 +7,7 @@ import { SellerCard } from '@/components/marketplace/SellerCard';
 import { Button } from '@/components/ui/Button';
 import { MapPin, ArrowRight, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface NearbySellersProps {
   businessType: 'wholesaler' | 'manufacturer';
@@ -29,7 +30,6 @@ export function NearbySellersSection({
 
       setLoading(true);
       try {
-        // Fetch sellers from API
         const params = new URLSearchParams({
           latitude: coordinates.latitude.toString(),
           longitude: coordinates.longitude.toString(),
@@ -40,17 +40,12 @@ export function NearbySellersSection({
 
         const response = await fetch(`/api/sellers?${params.toString()}`);
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch sellers');
-        }
+        if (!response.ok) throw new Error('Failed to fetch sellers');
 
         const data = await response.json();
 
-        if (!data.success) {
-          throw new Error(data.error || 'Failed to fetch sellers');
-        }
+        if (!data.success) throw new Error(data.error || 'Failed to fetch sellers');
 
-        // Get the first 3 sellers
         const nearbySellers = (data.data.sellers || []).slice(0, 3);
         setSellers(nearbySellers);
       } catch (err) {
@@ -63,127 +58,83 @@ export function NearbySellersSection({
     fetchNearbySellers();
   }, [coordinates, businessType]);
 
-  // If no location, show location prompt
-  if (!coordinates) {
+  const renderContent = () => {
+    // No Location State
+    if (!coordinates) {
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-3xl border border-neutral-100 p-12 text-center max-w-xl mx-auto shadow-soft"
+        >
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-6">
+            <MapPin className="w-10 h-10 text-primary" />
+          </div>
+          <h3 className="text-2xl font-bold text-neutral-900 mb-3">
+            Discover Nearby {businessType === 'wholesaler' ? 'Wholesalers' : 'Manufacturers'}
+          </h3>
+          <p className="text-neutral-600 mb-8 leading-relaxed">
+            Enable location access to find verified {businessType}s in your area and start trading instantly.
+          </p>
+          <Button onClick={requestLocation} size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/20">
+            <MapPin className="w-5 h-5 mr-2" />
+            Enable Location Access
+          </Button>
+        </motion.div>
+      );
+    }
+
+    // Loading State
+    if (loading) {
+      return (
+        <div className="flex flex-col items-center justify-center py-20">
+          <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
+          <p className="text-neutral-500 font-medium">Finding nearby sellers...</p>
+        </div>
+      );
+    }
+
     return (
-      <section className="py-16 bg-neutral-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-heading font-bold text-primary-dark mb-3">
-              {title}
-            </h2>
-            <p className="text-lg text-primary-gray max-w-2xl mx-auto">{description}</p>
-          </div>
-
-          <div className="bg-white rounded-lg border border-neutral-medium p-8 text-center max-w-md mx-auto">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-orange/10 rounded-full mb-4">
-              <MapPin className="w-8 h-8 text-primary-orange" />
-            </div>
-            <h3 className="text-xl font-heading font-semibold text-primary-dark mb-2">
-              Enable Location
-            </h3>
-            <p className="text-primary-gray mb-6">
-              Allow location access to discover nearby {businessType}s in your area
-            </p>
-            <Button onClick={requestLocation} variant="primary" className="w-full">
-              <MapPin className="w-5 h-5 mr-2" />
-              Enable Location
-            </Button>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // If loading
-  if (loading) {
-    return (
-      <section className="py-16 bg-neutral-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-heading font-bold text-primary-dark mb-3">
-              {title}
-            </h2>
-            <p className="text-lg text-primary-gray max-w-2xl mx-auto">{description}</p>
-          </div>
-          <div className="flex items-center justify-center py-12">
-            <Loader2 className="w-8 h-8 text-primary-orange animate-spin" />
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // If no sellers found
-  if (sellers.length === 0) {
-    return (
-      <section className="py-16 bg-neutral-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-heading font-bold text-primary-dark mb-3">
-              {title}
-            </h2>
-            <p className="text-lg text-primary-gray max-w-2xl mx-auto">{description}</p>
-          </div>
-          <div className="bg-white rounded-lg border border-neutral-medium p-8 text-center max-w-md mx-auto">
-            <p className="text-primary-gray mb-4">
-              No {businessType}s found in your area yet.
-            </p>
-            <Link href="/marketplace">
-              <Button variant="primary">
-                Explore Marketplace
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // Show sellers
-  return (
-    <section className="py-16 bg-neutral-light">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8">
-          <div>
-            <h2 className="text-3xl font-heading font-bold text-primary-dark mb-3">
-              {title}
-            </h2>
-            <p className="text-lg text-primary-gray max-w-2xl">{description}</p>
-          </div>
-          <Link href="/marketplace" className="mt-4 sm:mt-0">
-            <Button variant="outline" size="md">
-              View All
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </Link>
-        </div>
-
-        {/* Sellers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sellers.map((seller) => (
-            <SellerCard
+      <>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {sellers.map((seller, index) => (
+            <motion.div
               key={seller.id}
-              seller={seller}
-              onEnquire={() => {
-                // Navigate to seller profile
-                window.location.href = `/seller/${seller.id}`;
-              }}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <SellerCard
+                seller={seller}
+                onEnquire={() => window.location.href = `/seller/${seller.id}`}
+              />
+            </motion.div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-8">
+        <div className="text-center">
           <Link href="/marketplace">
-            <Button variant="primary" size="lg">
+            <Button variant="outline" size="lg" className="group border-neutral-200 hover:border-primary hover:text-primary">
               Discover More {businessType === 'wholesaler' ? 'Wholesalers' : 'Manufacturers'}
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>
+      </>
+    );
+  };
+
+  return (
+    <section className="py-24 bg-neutral-50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+            {title}
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">{description}</p>
+        </div>
+
+        {renderContent()}
       </div>
     </section>
   );

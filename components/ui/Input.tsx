@@ -4,31 +4,41 @@ import { cn } from '@/lib/utils';
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   helperText?: string;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ error, helperText, className, ...props }, ref) => {
+  ({ error, helperText, className, startIcon, endIcon, ...props }, ref) => {
     return (
       <div className="w-full">
-        <input
-          ref={ref}
-          className={cn(
-            'w-full px-4 py-3 rounded-lg border font-body text-base',
-            'transition-all duration-200 ease-in-out',
-            'focus:outline-none focus:ring-2 focus:ring-primary-orange focus:border-transparent',
-            'disabled:bg-neutral-light disabled:cursor-not-allowed',
-            error
-              ? 'border-accent-red focus:ring-accent-red'
-              : 'border-neutral-medium focus:ring-primary-orange',
-            className
+        <div className="relative">
+          {startIcon && (
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none">
+              {startIcon}
+            </div>
           )}
-          {...props}
-        />
-        {error && (
-          <p className="mt-1 text-sm text-accent-red font-body">{error}</p>
-        )}
-        {helperText && !error && (
-          <p className="mt-1 text-sm text-primary-gray font-body">{helperText}</p>
+          <input
+            className={cn(
+              'flex h-11 w-full rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200',
+              startIcon && 'pl-10',
+              endIcon && 'pr-10',
+              error && 'border-red-500 focus-visible:ring-red-500',
+              className
+            )}
+            ref={ref}
+            {...props}
+          />
+          {endIcon && (
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none">
+              {endIcon}
+            </div>
+          )}
+        </div>
+        {(error || helperText) && (
+          <p className={cn('mt-1.5 text-xs', error ? 'text-red-500' : 'text-neutral-500')}>
+            {error || helperText}
+          </p>
         )}
       </div>
     );

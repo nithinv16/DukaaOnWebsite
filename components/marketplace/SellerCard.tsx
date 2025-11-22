@@ -1,11 +1,11 @@
 'use client';
 
 import { Seller } from '@/types';
-import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { MapPin, Package, Building2, Navigation } from 'lucide-react';
+import { MapPin, Building2, Navigation, Star } from 'lucide-react';
 import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface SellerCardProps {
   seller: Seller;
@@ -22,111 +22,105 @@ export function SellerCard({ seller, onEnquire }: SellerCardProps) {
     thumbnailImage,
     description,
     distance,
+    rating = 4.5, // Default rating if not present
+    reviewCount = 12, // Default count if not present
   } = seller;
 
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+    <motion.div
+      whileHover={{ y: -8 }}
+      className="group bg-white rounded-3xl border border-neutral-100 overflow-hidden shadow-soft hover:shadow-hard transition-all duration-300 flex flex-col h-full"
+    >
       {/* Image Section */}
-      <div className="relative h-48 bg-neutral-light overflow-hidden">
+      <div className="relative h-56 bg-neutral-50 overflow-hidden">
         {thumbnailImage ? (
           <OptimizedImage
             src={thumbnailImage}
             alt={businessName}
             fill
-            layout="card"
-            enableBlur
-            blurColor="#FF6B35"
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-            quality={85}
-            fallback={
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-orange/10 to-secondary-blue/10">
-                <Building2 className="w-16 h-16 text-primary-gray/30" />
-              </div>
-            }
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-orange/10 to-secondary-blue/10">
-            <Building2 className="w-16 h-16 text-primary-gray/30" />
-          </div>
-        )}
-        
-        {/* Distance Badge */}
-        {distance !== undefined && (
-          <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-md flex items-center space-x-1">
-            <Navigation className="w-4 h-4 text-primary-orange" />
-            <span className="text-sm font-semibold text-primary-dark">
-              {distance.toFixed(1)} km
-            </span>
+          <div className="w-full h-full flex items-center justify-center text-neutral-300">
+            <Building2 className="w-16 h-16" />
           </div>
         )}
 
-        {/* Business Type Badge */}
-        <div className="absolute top-3 left-3 bg-primary-orange text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
-          {businessType}
+        {/* Distance Badge */}
+        {distance && (
+          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+            <Navigation className="w-3.5 h-3.5 text-primary" />
+            <span className="text-xs font-medium text-neutral-900">{distance} km</span>
+          </div>
+        )}
+
+        {/* Rating Badge */}
+        <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+          <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+          <span className="text-xs font-bold text-neutral-900">{rating}</span>
+          <span className="text-[10px] text-neutral-500">({reviewCount})</span>
         </div>
       </div>
 
       {/* Content Section */}
-      <div className="p-5 space-y-4">
-        {/* Business Name */}
-        <div>
-          <h3 className="text-xl font-heading font-bold text-primary-dark mb-1 line-clamp-1">
-            {businessName}
-          </h3>
-          <div className="flex items-center text-sm text-primary-gray">
-            <MapPin className="w-4 h-4 mr-1 flex-shrink-0" />
-            <span className="line-clamp-1">
-              {location.city}, {location.state}
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex items-start justify-between mb-2">
+          <div>
+            <span className="inline-block px-2.5 py-1 bg-primary/5 text-primary text-[10px] font-semibold uppercase tracking-wider rounded-full mb-2">
+              {businessType}
             </span>
+            <h3 className="text-xl font-bold text-neutral-900 line-clamp-1 group-hover:text-primary transition-colors">
+              {businessName}
+            </h3>
           </div>
         </div>
 
-        {/* Description */}
-        {description && (
-          <p className="text-sm text-primary-gray line-clamp-2">
-            {description}
-          </p>
-        )}
+        <div className="flex items-center gap-2 text-neutral-500 text-sm mb-4">
+          <MapPin className="w-4 h-4 flex-shrink-0" />
+          <span className="line-clamp-1">{location.city}, {location.state}</span>
+        </div>
+
+        <p className="text-neutral-600 text-sm line-clamp-2 mb-6 flex-grow">
+          {description}
+        </p>
 
         {/* Categories */}
-        {categories && categories.length > 0 && (
-          <div className="flex items-start space-x-2">
-            <Package className="w-4 h-4 text-primary-gray flex-shrink-0 mt-0.5" />
-            <div className="flex flex-wrap gap-2">
-              {categories.slice(0, 3).map((category, index) => (
-                <span
-                  key={index}
-                  className="inline-block bg-neutral-light px-2 py-1 rounded text-xs text-primary-dark"
-                >
-                  {category}
-                </span>
-              ))}
-              {categories.length > 3 && (
-                <span className="inline-block bg-neutral-light px-2 py-1 rounded text-xs text-primary-gray">
-                  +{categories.length - 3} more
-                </span>
-              )}
-            </div>
-          </div>
-        )}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {categories.slice(0, 3).map((cat) => (
+            <span
+              key={cat}
+              className="px-2.5 py-1 bg-neutral-50 text-neutral-600 text-xs rounded-lg border border-neutral-100"
+            >
+              {cat}
+            </span>
+          ))}
+          {categories.length > 3 && (
+            <span className="px-2.5 py-1 bg-neutral-50 text-neutral-400 text-xs rounded-lg border border-neutral-100">
+              +{categories.length - 3}
+            </span>
+          )}
+        </div>
 
         {/* Actions */}
-        <div className="flex space-x-3 pt-2">
-          <Link href={`/seller/${id}`} className="flex-1">
-            <Button variant="outline" size="sm" className="w-full">
-              View Details
-            </Button>
-          </Link>
+        <div className="grid grid-cols-2 gap-3 mt-auto">
+          <Button
+            variant="outline"
+            className="w-full border-neutral-200 hover:border-primary hover:text-primary"
+            asChild
+          >
+            <Link href={`/seller/${id}`}>
+              View Profile
+            </Link>
+          </Button>
           <Button
             variant="primary"
+            className="w-full shadow-lg shadow-primary/20 hover:shadow-primary/40"
             onClick={() => onEnquire(id)}
-            size="sm"
-            className="flex-1"
           >
-            Enquire
+            Enquire Now
           </Button>
         </div>
       </div>
-    </Card>
+    </motion.div>
   );
 }

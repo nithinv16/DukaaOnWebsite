@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { cn } from '@/lib/utils';
 
 export interface ModalProps {
@@ -54,16 +55,16 @@ export const Modal: React.FC<ModalProps> = ({
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? 'modal-title' : undefined}
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-primary-dark bg-opacity-50 transition-opacity"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -71,28 +72,29 @@ export const Modal: React.FC<ModalProps> = ({
       {/* Modal Content */}
       <div
         className={cn(
-          'relative bg-neutral-white rounded-lg shadow-xl w-full',
-          'transform transition-all',
+          'relative rounded-xl shadow-2xl w-full z-10',
+          'transform transition-all duration-200',
           'max-h-[90vh] overflow-y-auto',
           sizeStyles[size]
         )}
+        style={{ backgroundColor: 'white' }}
       >
         {/* Header */}
         {(title || showCloseButton) && (
-          <div className="flex items-center justify-between p-6 border-b border-neutral-light">
+          <div className="flex items-center justify-between p-6 border-b border-neutral-100">
             {title && (
-              <h2 id="modal-title" className="text-2xl font-heading font-semibold text-primary-dark">
+              <h2 id="modal-title" className="text-xl font-heading font-bold text-neutral-900">
                 {title}
               </h2>
             )}
             {showCloseButton && (
               <button
                 onClick={onClose}
-                className="text-primary-gray hover:text-primary-dark transition-colors p-1 rounded-lg hover:bg-neutral-light"
+                className="text-neutral-400 hover:text-neutral-600 transition-colors p-2 rounded-full hover:bg-neutral-100"
                 aria-label="Close modal"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -110,6 +112,7 @@ export const Modal: React.FC<ModalProps> = ({
         {/* Body */}
         <div className="p-6">{children}</div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

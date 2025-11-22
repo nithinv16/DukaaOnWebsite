@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { staggerContainer, staggerItem } from '@/components/animations/variants';
-import { Heading } from '@/components/ui/Typography/Heading';
+import { TrendingUp, Truck, Headphones, CreditCard } from 'lucide-react';
 
 export function ValuePropositionSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,56 +14,39 @@ export function ValuePropositionSection() {
       value: '40%',
       label: 'Cost Reduction',
       description: 'Lower procurement costs through direct sourcing',
-      icon: '💰',
+      icon: TrendingUp,
+      color: 'text-emerald-500',
+      bg: 'bg-emerald-500/10',
     },
     {
       value: '3x',
       label: 'Faster Delivery',
       description: 'Micro-warehousing enables rapid fulfillment',
-      icon: '⚡',
+      icon: Truck,
+      color: 'text-blue-500',
+      bg: 'bg-blue-500/10',
     },
     {
       value: '24/7',
       label: 'AI Support',
       description: 'Voice-based ordering in regional languages',
-      icon: '🤖',
+      icon: Headphones,
+      color: 'text-purple-500',
+      bg: 'bg-purple-500/10',
     },
     {
       value: '₹5L',
       label: 'Credit Access',
       description: 'Working capital for inventory growth',
-      icon: '💳',
+      icon: CreditCard,
+      color: 'text-orange-500',
+      bg: 'bg-orange-500/10',
     },
   ];
 
   return (
-    <section ref={ref} className="py-24 bg-neutral-white">
+    <section ref={ref} className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="text-center mb-16"
-        >
-          <motion.div variants={staggerItem}>
-            <span className="inline-block px-4 py-2 bg-primary-orange/10 rounded-full text-primary-orange text-sm font-medium mb-4">
-              Our Impact
-            </span>
-          </motion.div>
-          
-          <motion.div variants={staggerItem}>
-            <Heading as="h2" className="mb-6">
-              Revolutionizing Rural Commerce
-            </Heading>
-          </motion.div>
-
-          <motion.p variants={staggerItem} className="text-xl text-primary-gray max-w-3xl mx-auto">
-            DukaaOn bridges the gap between rural retailers and suppliers through technology,
-            enabling efficient distribution, credit access, and data-driven inventory management.
-          </motion.p>
-        </motion.div>
-
-        {/* Animated metrics grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -74,72 +57,58 @@ export function ValuePropositionSection() {
             <motion.div
               key={index}
               variants={staggerItem}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="relative group"
+              className="p-6 rounded-3xl bg-neutral-50 border border-neutral-100 hover:shadow-lg transition-all duration-300 group"
             >
-              <div className="bg-gradient-to-br from-white to-neutral-light border border-neutral-medium/20 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                {/* Icon */}
-                <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                  {metric.icon}
-                </div>
-
-                {/* Animated value */}
-                <motion.div
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 0.5, type: 'spring' }}
-                  className="text-4xl font-bold text-primary-orange mb-2"
-                >
-                  {metric.value}
-                </motion.div>
-
-                <h3 className="text-xl font-semibold text-primary-dark mb-2">
-                  {metric.label}
-                </h3>
-
-                <p className="text-sm text-primary-gray">
-                  {metric.description}
-                </p>
-
-                {/* Decorative gradient border on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-orange to-accent-yellow opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
+              <div className={`w-14 h-14 rounded-2xl ${metric.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <metric.icon className={`w-7 h-7 ${metric.color}`} />
               </div>
+              <div className="text-4xl font-bold text-neutral-900 mb-2">{metric.value}</div>
+              <div className="text-lg font-semibold text-neutral-900 mb-2">{metric.label}</div>
+              <p className="text-neutral-500 text-sm leading-relaxed">{metric.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Core value proposition */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-20 bg-gradient-to-br from-primary-dark to-secondary-blue rounded-3xl p-12 text-white relative overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-24 relative rounded-[2.5rem] overflow-hidden"
         >
-          {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-orange/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-yellow/20 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-neutral-900" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
-            <h3 className="text-3xl sm:text-4xl font-bold mb-6">
+          <div className="relative z-10 p-12 md:p-20 text-center text-white">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tight">
               Our Vision & Mission
             </h3>
-            <div className="mb-8 space-y-6">
-              <div>
-                <h4 className="text-xl font-semibold text-accent-yellow mb-3">Vision</h4>
-                <p className="text-lg text-neutral-light/90 leading-relaxed">
-                  To become the backbone of rural and semi-urban commerce by enabling small retailers, 
+
+            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16">
+              <div className="text-left">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-1 bg-primary rounded-full" />
+                  <h4 className="text-2xl font-bold text-white">Vision</h4>
+                </div>
+                <p className="text-lg text-neutral-300 leading-relaxed">
+                  To become the backbone of rural and semi-urban commerce by enabling small retailers,
                   wholesalers, and manufacturers through tech-driven distribution, financial and supply chain solutions.
                 </p>
               </div>
-              <div>
-                <h4 className="text-xl font-semibold text-accent-yellow mb-3">Mission</h4>
-                <p className="text-lg text-neutral-light/90 leading-relaxed">
-                  Creating a future where every small retailer has access to the tools, credit, and technology 
+              <div className="text-left">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-1 bg-secondary rounded-full" />
+                  <h4 className="text-2xl font-bold text-white">Mission</h4>
+                </div>
+                <p className="text-lg text-neutral-300 leading-relaxed">
+                  Creating a future where every small retailer has access to the tools, credit, and technology
                   they need to thrive in an increasingly digital world.
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
+
+            <div className="flex flex-wrap justify-center gap-3">
               {[
                 'AI-Powered Supply Chain',
                 'Micro-Warehousing',
@@ -150,7 +119,7 @@ export function ValuePropositionSection() {
               ].map((feature, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
+                  className="px-5 py-2.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-sm font-medium text-white hover:bg-white/10 transition-colors"
                 >
                   {feature}
                 </span>

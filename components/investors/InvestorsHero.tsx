@@ -42,7 +42,7 @@ export function InvestorsHero() {
           variants={staggerItem}
           className="text-xl sm:text-2xl text-neutral-light/90 mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          Join us in transforming India's ₹50+ trillion rural retail market through technology, 
+          Join us in transforming India&apos;s ₹50+ trillion rural retail market through technology,
           financial inclusion, and innovative supply chain solutions
         </motion.p>
 

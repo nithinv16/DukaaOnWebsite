@@ -4,12 +4,14 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { staggerContainer, staggerItem } from '@/components/animations/variants';
 import { Heading } from '@/components/ui/Typography/Heading';
+import { ArrowRight } from 'lucide-react';
 
 interface Stakeholder {
   id: string;
   name: string;
   icon: string;
   color: string;
+  gradient: string;
   benefits: {
     title: string;
     description: string;
@@ -27,7 +29,8 @@ export function StakeholderBenefitsSection() {
       id: 'retailers',
       name: 'Retailers',
       icon: '🏪',
-      color: 'primary-orange',
+      color: 'primary',
+      gradient: 'from-primary to-primary-light',
       benefits: [
         {
           title: 'Lower Procurement Costs',
@@ -55,7 +58,8 @@ export function StakeholderBenefitsSection() {
       id: 'wholesalers',
       name: 'Wholesalers',
       icon: '🏭',
-      color: 'secondary-blue',
+      color: 'secondary',
+      gradient: 'from-secondary to-secondary-light',
       benefits: [
         {
           title: 'Expanded Reach',
@@ -83,7 +87,8 @@ export function StakeholderBenefitsSection() {
       id: 'manufacturers',
       name: 'Manufacturers',
       icon: '🏗️',
-      color: 'secondary-green',
+      color: 'secondary',
+      gradient: 'from-green-500 to-emerald-400',
       benefits: [
         {
           title: 'Direct Market Access',
@@ -112,6 +117,7 @@ export function StakeholderBenefitsSection() {
       name: 'FMCG Companies',
       icon: '🏢',
       color: 'accent-yellow',
+      gradient: 'from-accent-yellow to-yellow-400',
       benefits: [
         {
           title: 'Rural Penetration',
@@ -135,34 +141,39 @@ export function StakeholderBenefitsSection() {
         },
       ],
     },
-
   ];
 
   const activeStakeholder = stakeholders.find((s) => s.id === activeTab) || stakeholders[0];
 
   return (
-    <section ref={ref} className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref} className="py-32 bg-neutral-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <motion.div variants={staggerItem}>
-            <span className="inline-block px-4 py-2 bg-secondary-green/10 rounded-full text-secondary-green text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-primary-light text-sm font-medium mb-6">
               For Everyone
             </span>
           </motion.div>
 
           <motion.div variants={staggerItem}>
-            <Heading as="h2" className="mb-6">
-              Benefits for All Stakeholders
+            <Heading as="h2" className="mb-6 text-white">
+              Benefits for All <span className="text-gradient from-primary to-accent-yellow">Stakeholders</span>
             </Heading>
           </motion.div>
 
-          <motion.p variants={staggerItem} className="text-xl text-primary-gray max-w-3xl mx-auto">
-            DukaaOn creates value across the entire supply chain ecosystem
+          <motion.p variants={staggerItem} className="text-xl text-neutral-400 max-w-3xl mx-auto">
+            DukaaOn creates value across the entire supply chain ecosystem, empowering every participant to grow.
           </motion.p>
         </motion.div>
 
@@ -171,27 +182,26 @@ export function StakeholderBenefitsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-16"
         >
           {stakeholders.map((stakeholder) => (
             <button
               key={stakeholder.id}
               onClick={() => setActiveTab(stakeholder.id)}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 ${
-                activeTab === stakeholder.id
-                  ? `bg-${stakeholder.color} text-white shadow-lg scale-105`
-                  : 'bg-neutral-light text-primary-gray hover:bg-neutral-medium/30'
-              }`}
-              style={
-                activeTab === stakeholder.id
-                  ? {
-                      backgroundColor: `var(--${stakeholder.color})`,
-                    }
-                  : undefined
-              }
+              className={`group relative px-8 py-4 rounded-2xl font-medium transition-all duration-300 flex items-center gap-3 overflow-hidden ${activeTab === stakeholder.id
+                ? 'text-white shadow-glow'
+                : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white'
+                }`}
             >
-              <span className="text-xl">{stakeholder.icon}</span>
-              <span>{stakeholder.name}</span>
+              {activeTab === stakeholder.id && (
+                <motion.div
+                  layoutId="activeTab"
+                  className={`absolute inset-0 bg-gradient-to-r ${stakeholder.gradient}`}
+                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className="relative z-10 text-2xl group-hover:scale-110 transition-transform duration-300">{stakeholder.icon}</span>
+              <span className="relative z-10 font-bold">{stakeholder.name}</span>
             </button>
           ))}
         </motion.div>
@@ -201,6 +211,7 @@ export function StakeholderBenefitsSection() {
           key={activeTab}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
@@ -210,22 +221,17 @@ export function StakeholderBenefitsSection() {
               initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
-              className="bg-gradient-to-br from-neutral-light to-white rounded-xl p-6 border border-neutral-medium/20 hover:shadow-lg transition-shadow duration-300"
+              className="group bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 hover:bg-white/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="flex items-start gap-4">
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl flex-shrink-0"
-                  style={{
-                    backgroundColor: `var(--${activeStakeholder.color})20`,
-                  }}
-                >
+              <div className="flex items-start gap-6">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 bg-gradient-to-br ${activeStakeholder.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                   {benefit.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-primary-dark mb-2">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-light transition-colors">
                     {benefit.title}
                   </h3>
-                  <p className="text-primary-gray leading-relaxed">
+                  <p className="text-neutral-400 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -239,30 +245,20 @@ export function StakeholderBenefitsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-20 text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row gap-4 items-center">
+          <div className="inline-flex flex-col sm:flex-row gap-4 items-center justify-center">
             <a
               href="/contact"
-              className="px-8 py-3 bg-primary-orange text-white rounded-lg font-medium hover:bg-primary-orange/90 transition-colors shadow-lg"
+              className="px-8 py-4 bg-gradient-to-r from-primary to-primary-dark text-white rounded-xl font-bold hover:shadow-glow transition-all duration-300 flex items-center gap-2 group"
             >
               Partner With Us
-            </a>
-            <a
-              href="/investors"
-              className="px-8 py-3 border-2 border-primary-orange text-primary-orange rounded-lg font-medium hover:bg-primary-orange hover:text-white transition-colors"
-            >
-              For Investors
-            </a>
-            <a
-              href="/about"
-              className="px-8 py-3 border-2 border-primary-gray text-primary-gray rounded-lg font-medium hover:border-primary-dark hover:text-primary-dark transition-colors"
-            >
-              Learn More
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
             </a>
           </div>
         </motion.div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 }

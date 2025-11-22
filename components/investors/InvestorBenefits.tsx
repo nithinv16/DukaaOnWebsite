@@ -100,7 +100,7 @@ export function InvestorBenefits() {
             Ready to Join Our Journey?
           </h3>
           <p className="text-xl text-neutral-light/90 mb-8 max-w-2xl mx-auto">
-            Let's discuss how you can be part of transforming rural commerce in India
+            Let&apos;s discuss how you can be part of transforming rural commerce in India
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">

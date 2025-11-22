@@ -86,7 +86,7 @@ export default function MarketplacePage() {
     if (coordinates) {
       fetchSellers(coordinates, {
         radius: filters.radius,
-        businessType: filters.businessType 
+        businessType: filters.businessType
           ? (filters.businessType as 'wholesaler' | 'manufacturer')
           : undefined,
         category: filters.category || undefined,
@@ -100,7 +100,7 @@ export default function MarketplacePage() {
       // Get user's city from the first seller's location (approximation)
       // In a real implementation, you'd reverse geocode the user's coordinates
       const userCity = 'Unknown'; // Placeholder - would need reverse geocoding
-      
+
       trackSellerDiscovery(sellers.length, filters.radius, userCity);
     }
   }, [sellers, filters.radius, coordinates]);
@@ -108,7 +108,7 @@ export default function MarketplacePage() {
   // Filter sellers based on search
   const filteredSellers = useMemo(() => {
     if (!sellers) return [];
-    
+
     let filtered = sellers;
 
     // Apply search filter
@@ -197,7 +197,7 @@ export default function MarketplacePage() {
   return (
     <PageLayout>
       <ClientMetadata
-        title="Marketplace - Find Wholesalers & Manufacturers Near You | DukaaOn"
+        title="Transforming Rural Distribution & Commerce | DukaaOn"
         description="Discover wholesalers and manufacturers in your area. Connect directly with suppliers, get competitive prices, and grow your retail business with DukaaOn's location-based marketplace."
         canonical="/marketplace"
       />

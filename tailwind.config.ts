@@ -9,74 +9,84 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary Colors
+        // Primary Brand Colors
         primary: {
-          orange: '#FF6B35',
-          dark: '#1A1A1A',
-          gray: '#545454',
+          DEFAULT: '#FF6B35', // Vibrant Orange
+          light: '#FF8C61',
+          dark: '#E55A2B',
+          foreground: '#FFFFFF',
         },
-        // Secondary Colors
+        // Secondary Brand Colors
         secondary: {
-          blue: '#004E89',
-          green: '#2A9D8F',
-        },
-        // Neutral Colors
-        neutral: {
-          white: '#FFFFFF',
-          light: '#F4F4F4',
-          medium: '#CCCCCC',
-          dark: '#333333',
+          DEFAULT: '#004E89', // Deep Blue
+          light: '#0066B3',
+          dark: '#003A66',
+          foreground: '#FFFFFF',
         },
         // Accent Colors
         accent: {
           yellow: '#FFB703',
+          teal: '#2A9D8F',
           red: '#E63946',
+        },
+        // Neutral Colors (Premium Grays)
+        neutral: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+          950: '#030712',
+        },
+        // Background Colors
+        background: {
+          DEFAULT: '#FFFFFF',
+          alt: '#F8FAFC',
+          dark: '#0F172A',
         },
       },
       fontFamily: {
-        heading: ['Inter', 'Poppins', 'sans-serif'],
-        body: ['Inter', 'Open Sans', 'sans-serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
+        heading: ['var(--font-outfit)', 'sans-serif'],
       },
-      fontSize: {
-        xs: '0.75rem', // 12px
-        sm: '0.875rem', // 14px
-        base: '1rem', // 16px
-        lg: '1.125rem', // 18px
-        xl: '1.25rem', // 20px
-        '2xl': '1.5rem', // 24px
-        '3xl': '1.875rem', // 30px
-        '4xl': '2.25rem', // 36px
-        '5xl': '3rem', // 48px
-        '6xl': '3.75rem', // 60px
+      boxShadow: {
+        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        'medium': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+        'hard': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
+        'glow': '0 0 15px rgba(255, 107, 53, 0.3)',
       },
-      spacing: {
-        '1': '0.25rem', // 4px
-        '2': '0.5rem', // 8px
-        '3': '0.75rem', // 12px
-        '4': '1rem', // 16px
-        '6': '1.5rem', // 24px
-        '8': '2rem', // 32px
-        '12': '3rem', // 48px
-        '16': '4rem', // 64px
-        '24': '6rem', // 96px
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'hero-gradient': 'linear-gradient(to right bottom, #ffffff, #f8fafc, #f1f5f9)',
+        'primary-gradient': 'linear-gradient(135deg, #FF6B35 0%, #FF8C61 100%)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-in-out',
-        'slide-in': 'slideIn 0.6s ease-in-out',
-        'scale-in': 'scaleIn 0.4s ease-in-out',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'slide-up': 'slideUp 0.8s ease-out forwards',
+        'scale-in': 'scaleIn 0.5s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        slideIn: {
+        slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         scaleIn: {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
       },
     },

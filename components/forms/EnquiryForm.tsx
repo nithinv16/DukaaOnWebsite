@@ -240,7 +240,7 @@ export function EnquiryForm({
           id="phone"
           name="phone"
           type="tel"
-          placeholder="+91 98765 43210"
+          placeholder="+91 80896 68552"
           value={formData.phone}
           onChange={handleChange}
           onBlur={() => handleBlur('phone')}
