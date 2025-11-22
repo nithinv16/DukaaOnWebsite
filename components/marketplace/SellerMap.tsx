@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import { MapPin } from 'lucide-react';
 
 // Fix for default marker icons in Leaflet
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
@@ -147,11 +148,10 @@ export function SellerMap({
             <p class="text-sm text-gray-600 mb-2">
               ${seller.location.city}, ${seller.location.state}
             </p>
-            ${
-              seller.distance
-                ? `<p class="text-xs text-gray-500 mb-2">📍 ${seller.distance.toFixed(1)} km away</p>`
-                : ''
-            }
+            ${seller.distance
+            ? `<p class="text-xs text-gray-500 mb-2">📍 ${seller.distance.toFixed(1)} km away</p>`
+            : ''
+          }
             <button 
               onclick="window.dispatchEvent(new CustomEvent('seller-click', { detail: '${seller.id}' }))"
               class="w-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold py-2 px-3 rounded transition-colors"

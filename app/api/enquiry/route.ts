@@ -95,6 +95,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Prepare insert data - only include fields that have values
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const insertData: Record<string, any> = {
       visitor_name: sanitizedData.visitorName,
       visitor_email: sanitizedData.email,

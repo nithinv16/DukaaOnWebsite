@@ -1,5 +1,7 @@
 'use client';
 
+import NextImage from 'next/image';
+
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { staggerContainer, staggerItem } from '@/components/animations/variants';
@@ -83,10 +85,13 @@ export function HeroSection() {
             className="relative hidden lg:block"
           >
             <div className="relative z-10 bg-white rounded-3xl shadow-2xl p-4 border border-neutral-100 animate-float">
-              <img
+              <NextImage
                 src="/home-hero.jpg"
                 alt="DukaaOn App Interface"
+                width={600}
+                height={800}
                 className="rounded-2xl w-full h-auto object-cover"
+                priority
               />
 
               {/* Floating Elements */}

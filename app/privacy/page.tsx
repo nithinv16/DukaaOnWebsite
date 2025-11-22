@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
 
                         <h2 className="text-2xl font-bold mt-12 mb-6">Introduction</h2>
 
-                        <p>DukaaOn ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how information about you is collected, used, and disclosed when you use our mobile application DukaaOn (the "App") and related services.</p>
+                        <p>DukaaOn (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how information about you is collected, used, and disclosed when you use our mobile application DukaaOn (the &quot;App&quot;) and related services.</p>
 
                         <p>By using the App, you agree to the collection and use of information in accordance with this policy. We will not use or share your information with anyone except as described in this Privacy Policy.</p>
 
@@ -85,7 +85,7 @@ export default function PrivacyPolicyPage() {
                         <p>You can disable location permissions through your device settings, but this may limit certain features of the App.</p>
 
                         <h3 className="text-xl font-semibold mt-8 mb-4">Account Information</h3>
-                        <p>You can update your account information and preferences at any time through the App's profile settings.</p>
+                        <p>You can update your account information and preferences at any time through the App&apos;s profile settings.</p>
 
                         <h3 className="text-xl font-semibold mt-8 mb-4">Promotional Communications</h3>
                         <p>You can opt out of receiving promotional communications by following instructions in those communications.</p>
@@ -98,13 +98,13 @@ export default function PrivacyPolicyPage() {
 
                         <p>We retain your information as long as needed to provide services and fulfill the purposes outlined in this Privacy Policy. We will retain and use your information as necessary to comply with legal obligations, resolve disputes, and enforce our agreements.</p>
 
-                        <h2 className="text-2xl font-bold mt-12 mb-6">Children's Privacy</h2>
+                        <h2 className="text-2xl font-bold mt-12 mb-6">Children&apos;s Privacy</h2>
 
                         <p>Our App is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If you learn that a child has provided us with personal information, please contact us.</p>
 
                         <h2 className="text-2xl font-bold mt-12 mb-6">Changes to This Privacy Policy</h2>
 
-                        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top.</p>
+                        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Effective Date&quot; at the top.</p>
 
                         <h2 className="text-2xl font-bold mt-12 mb-6">Contact Us</h2>
 

@@ -10,6 +10,7 @@ import { useGeolocation } from '@/hooks/useGeolocation';
 import { calculateDistance } from '@/lib/geolocation';
 
 // Fix for default marker icons in Leaflet
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
@@ -25,7 +26,7 @@ export function SellerLocationMap({ seller }: SellerLocationMapProps) {
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [distance, setDistance] = useState<number | null>(null);
-  
+
   const { coordinates: userLocation } = useGeolocation();
 
   // Calculate distance from user to seller
