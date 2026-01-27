@@ -12,15 +12,21 @@ interface SEOProps {
 
 export function generateMetadata({
   title = 'DukaaOn - Tech-Enabled Distribution Platform',
-  description = 'DukaaOn is a tech-enabled distribution and financial inclusion platform for rural and semi-urban retailers, connecting them with wholesalers and manufacturers.',
+  description = 'DukaaOn is India\'s leading B2B wholesale marketplace connecting retailers with searching manufacturers, wholesalers, and distributors. Compare with Justdial, Indiamart, ElasticRun, and Jumbotail.',
   keywords = [
     'DukaaOn',
-    'distribution platform',
+    'wholesale marketplace India',
+    'manufacturer directory India',
+    'distributor platform India',
+    'B2B marketplace for suppliers',
+    'Justdial',
+    'Indiamart',
+    'ElasticRun',
+    'Jumbotail',
     'rural retail',
-    'wholesalers',
-    'manufacturers',
     'supply chain',
-    'India',
+    'FMCG wholesale',
+    'grocery distributors',
   ],
   ogImage = '/og-image.jpg',
   ogType = 'website',
@@ -28,7 +34,7 @@ export function generateMetadata({
   noindex = false,
 }: SEOProps = {}): Metadata {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dukaaon.in';
-  
+
   return {
     title,
     description,
@@ -107,7 +113,7 @@ export function generateOrganizationSchema() {
 // Structured Data for Breadcrumbs
 export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dukaaon.in';
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -158,5 +164,41 @@ export function generateLocalBusinessSchema(seller: {
         })),
       },
     }),
+  };
+}
+
+// Structured Data for Product
+export function generateProductSchema(product: {
+  name: string;
+  description: string;
+  image: string;
+  sku?: string;
+  brand?: string;
+  price?: number;
+  currency?: string;
+  availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
+  sellerName?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: [product.image],
+    sku: product.sku,
+    brand: {
+      '@type': 'Brand',
+      name: product.brand || 'Generic',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: product.price,
+      priceCurrency: product.currency || 'INR',
+      availability: `https://schema.org/${product.availability || 'InStock'}`,
+      seller: {
+        '@type': 'Organization',
+        name: product.sellerName || 'DukaaOn Seller',
+      },
+    },
   };
 }

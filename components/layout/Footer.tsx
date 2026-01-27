@@ -65,6 +65,24 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link href="/blog" className="text-sm hover:text-primary transition-colors flex items-center group">
+                    <ArrowRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    Blog & Insights
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/locations" className="text-sm hover:text-primary transition-colors flex items-center group">
+                    <ArrowRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    Locations
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/categories" className="text-sm hover:text-primary transition-colors flex items-center group">
+                    <ArrowRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    Categories
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>

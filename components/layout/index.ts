@@ -8,5 +8,6 @@ export {
   generateOrganizationSchema,
   generateBreadcrumbSchema,
   generateLocalBusinessSchema,
+  generateProductSchema,
 } from './SEO';
 export { ClientMetadata } from './ClientMetadata';
