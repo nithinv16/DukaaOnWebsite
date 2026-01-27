@@ -83,7 +83,7 @@ export default function CategoryPage({ params }: Props) {
                             </div>
                             <h3 className="text-xl font-bold mb-4">Stock on Credit</h3>
                             <p className="text-neutral-600">
-                                Don't let cash flow stop your sales. Buy {category.title} now and pay us later.
+                                Don&apos;t let cash flow stop your sales. Buy {category.title} now and pay us later.
                             </p>
                         </div>
                         <div className="bg-white p-8 rounded-2xl shadow-sm md:transform md:-translate-y-12">
@@ -114,7 +114,7 @@ export default function CategoryPage({ params }: Props) {
                     The Smart Way to Buy {category.title}
                 </h2>
                 <p className="text-neutral-600 leading-relaxed">
-                    Sourcing {category.name} for your retail store shouldn't be a hassle.
+                    Sourcing {category.name} for your retail store shouldn&apos;t be a hassle.
                     DukaaOn brings the wholesale market to your phone.
                     With our <strong>Credit Facility</strong> and <strong>Hyperlocal Logistics</strong>, you can compete with big supermarkets.
                     Whether you are in a remote village or a busy town, gets the best margins on {category.title}.

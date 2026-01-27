@@ -92,7 +92,7 @@ export default function LocationPage({ params }: Props) {
                                     `Hyperlocal Delivery: Next-day delivery within ${location.name}.`,
                                     'Direct from Local Manufacturers: Better margins.',
                                     'No Middlemen Commissions: Unlike traditional chains.',
-                                    'Servicing Remote Areas: We reach where others don\'t.'
+                                    'Servicing Remote Areas: We reach where others don&apos;t.'
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-start">
                                         <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />

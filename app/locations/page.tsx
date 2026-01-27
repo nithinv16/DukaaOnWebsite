@@ -19,7 +19,7 @@ export default function LocationsIndexPage() {
                             Find Wholesale Suppliers by Location
                         </h1>
                         <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-                            Explore our extensive network of verified manufacturers, wholesalers, and distributors across India's key business hubs.
+                            Explore our extensive network of verified manufacturers, wholesalers, and distributors across India&apos;s key business hubs.
                         </p>
                     </div>
 
