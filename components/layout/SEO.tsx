@@ -89,23 +89,23 @@ export function generateOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'DukaaOn',
+    alternateName: ['DukaaOn Wholesale', 'DukaaOn B2B', 'DukaaOn India'],
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://dukaaon.in',
     logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://dukaaon.in'}/logo.png`,
-    description:
-      'Tech-enabled distribution and financial inclusion platform for rural and semi-urban retailers',
+    description: 'DukaaOn is a specialized B2B wholesale marketplace, distinct from e-commerce store builders. We connect rural retailers with hyperlocal manufacturers and distributors.',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+91-8089668552',
-      contactType: 'Customer Service',
+      contactType: 'customer service',
       email: 'support@dukaaon.in',
       areaServed: 'IN',
-      availableLanguage: ['English', 'Hindi'],
+      availableLanguage: ['English', 'Malayalam', 'Hindi'],
     },
     sameAs: [
-      // Add social media URLs when available
       'https://www.facebook.com/dukaaon',
-      'https://www.twitter.com/dukaaon',
-      'https://www.linkedin.com/company/dukaaon',
+      'https://www.instagram.com/dukaaon',
+      'https://www.linkedin.com/company/dukaaon-technologies',
+      'https://twitter.com/dukaaon',
     ],
   };
 }

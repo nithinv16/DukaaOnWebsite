@@ -42,22 +42,19 @@ const ProblemSolutionSection = dynamic(
 );
 
 export const metadata: Metadata = generateMetadata({
-  title: 'DukaaOn | Connect with FMCG Distributors, Wholesalers & Manufacturers',
-  description: 'Find nearby FMCG distributors, wholesalers, and manufacturers. Connect with HUL, ITC, P&G distributors, and get direct access to best prices. Better than Indiamart or Justdial for rural retailers.',
+  title: 'DukaaOn B2B Wholesale App | Not Dukaan | Rural India Marketplace',
+  description: 'DukaaOn is a hyperlocal wholesale marketplace for retailers in Kerala and India. Get stock on credit from local manufacturers. We are a B2B network, not a store builder app.',
   keywords: [
     'DukaaOn',
-    'FMCG distributors',
-    'HUL distributor near me',
-    'ITC distributor contact',
-    'P&G wholesale',
-    'Nestle distributors',
-    'Britannia wholesale',
-    'wholesale market near me',
-    'kirana store suppliers',
-    'rural retail platform',
-    'B2B marketplace India',
-    'manufacturers directory',
-    'direct from factory',
+    'DukaaOn app',
+    'DukaaOn wholesale',
+    'Dukaon',
+    'Duka On',
+    'B2B marketplace Kerala',
+    'wholesale stock on credit',
+    'FMCG distributors Kerala',
+    'DukaaOn vs Dukaan',
+    'rural retail platform'
   ],
   canonical: '/',
 });
