@@ -69,11 +69,11 @@ export default function LocationPage({ params }: Props) {
                                 Find {location.name} Suppliers <ArrowRight className="ml-2 w-5 h-5" />
                             </Button>
                         </Link>
-                        <Link href="/auth/register">
+                        <a href="https://play.google.com/store/apps/details?id=com.sixn8.dukaaon&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
                             <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8 bg-transparent text-white border-white hover:bg-white/10 hover:text-white">
                                 Sell in {location.name}
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

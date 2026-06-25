@@ -87,9 +87,9 @@ export default function BlogPostPage({ params }: Props) {
                             Join DukaaOn today and connect with thousands of verified businesses across India.
                         </p>
                         <div className="flex justify-center gap-4">
-                            <Link href="/auth/register">
+                            <a href="https://play.google.com/store/apps/details?id=com.sixn8.dukaaon&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
                                 <Button size="lg">Get Started Free</Button>
-                            </Link>
+                            </a>
                             <Link href="/marketplace">
                                 <Button size="lg" variant="outline">Browse Marketplace</Button>
                             </Link>

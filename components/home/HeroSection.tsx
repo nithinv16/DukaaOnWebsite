@@ -1,6 +1,7 @@
 'use client';
 
 import NextImage from 'next/image';
+import Link from 'next/link';
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
@@ -51,14 +52,18 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div variants={staggerItem} className="flex flex-wrap gap-4 mb-12">
-              <Button size="lg" variant="primary" className="shadow-glow hover:scale-105 transition-transform">
-                Get Started Now
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-neutral-200 hover:bg-neutral-50">
-                <PlayCircle className="mr-2 w-5 h-5" />
-                Watch Demo
-              </Button>
+              <a href="https://play.google.com/store/apps/details?id=com.sixn8.dukaaon&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="primary" className="shadow-glow hover:scale-105 transition-transform">
+                  Get Started Now
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </a>
+              <Link href="/demo">
+                <Button size="lg" variant="outline" className="border-neutral-200 hover:bg-neutral-50">
+                  <PlayCircle className="mr-2 w-5 h-5" />
+                  Watch Demo
+                </Button>
+              </Link>
             </motion.div>
 
             <motion.div variants={staggerItem} className="grid grid-cols-3 gap-8 border-t border-neutral-100 pt-8">
