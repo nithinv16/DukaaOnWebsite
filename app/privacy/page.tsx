@@ -110,7 +110,7 @@ export default function PrivacyPolicyPage() {
 
                         <p>If you have any questions about this Privacy Policy, please contact us at:</p>
                         <ul className="list-disc pl-6 space-y-2 mb-6">
-                            <li>Email: <a href="mailto:support@dukaaon.in" className="text-primary hover:underline">support@dukaaon.in</a></li>
+                            <li>Email: <a href="mailto:admin@dukaaon.in" className="text-primary hover:underline">admin@dukaaon.in</a></li>
                             <li>Address: SIXN8 Technologies private limited, Kannampally, Ranni</li>
                         </ul>
 

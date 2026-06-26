@@ -53,10 +53,10 @@ export default function ContactPage() {
                         Email
                       </h3>
                       <a
-                        href="mailto:support@dukaaon.in"
+                        href="mailto:admin@dukaaon.in"
                         className="text-primary-gray hover:text-primary-orange transition-colors"
                       >
-                        support@dukaaon.in
+                        admin@dukaaon.in
                       </a>
                     </div>
                   </div>

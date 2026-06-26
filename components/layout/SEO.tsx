@@ -97,7 +97,7 @@ export function generateOrganizationSchema() {
       '@type': 'ContactPoint',
       telephone: '+91-8089668552',
       contactType: 'customer service',
-      email: 'support@dukaaon.in',
+      email: 'admin@dukaaon.in',
       areaServed: 'IN',
       availableLanguage: ['English', 'Malayalam', 'Hindi'],
     },

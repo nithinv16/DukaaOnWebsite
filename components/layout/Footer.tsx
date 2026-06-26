@@ -44,7 +44,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-3 text-sm text-neutral-400">
               <Mail className="h-5 w-5 text-primary" />
-              <a href="mailto:support@dukaaon.in" className="hover:text-white transition-colors">support@dukaaon.in</a>
+              <a href="mailto:admin@dukaaon.in" className="hover:text-white transition-colors">admin@dukaaon.in</a>
             </div>
             <div className="flex items-center gap-3 text-sm text-neutral-400">
               <Phone className="h-5 w-5 text-primary" />
