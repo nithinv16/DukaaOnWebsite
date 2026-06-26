@@ -1,26 +1,8 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+import { EnquiryForm } from '@/components/forms/EnquiryForm';
 import { PageLayout, ClientMetadata, generateBreadcrumbSchema } from '@/components/layout';
 import { Mail, Phone, MapPin } from 'lucide-react';
-
-// Lazy load the enquiry form since it's below the fold
-const EnquiryForm = dynamic(
-  () => import('@/components/forms/EnquiryForm').then(mod => mod.EnquiryForm),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="animate-pulse space-y-6">
-        <div className="h-10 bg-neutral-medium rounded"></div>
-        <div className="h-10 bg-neutral-medium rounded"></div>
-        <div className="h-10 bg-neutral-medium rounded"></div>
-        <div className="h-10 bg-neutral-medium rounded"></div>
-        <div className="h-32 bg-neutral-medium rounded"></div>
-        <div className="h-12 bg-neutral-medium rounded"></div>
-      </div>
-    )
-  }
-);
 
 export default function ContactPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([

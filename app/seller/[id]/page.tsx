@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
 import { PageLayout, ClientMetadata, generateLocalBusinessSchema, generateBreadcrumbSchema } from '@/components/layout';
 import { Seller } from '@/types';
@@ -11,62 +10,10 @@ import { SellerProfileHeader } from '@/components/seller/SellerProfileHeader';
 import { EnquireButton } from '@/components/seller/EnquireButton';
 import { trackSellerView } from '@/lib/analytics';
 
-// Lazy load heavy components
-const ProductGallery = dynamic(
-  () => import('@/components/seller/ProductGallery').then(mod => ({ default: mod.ProductGallery })),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="bg-white rounded-lg p-8">
-        <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-neutral-medium rounded w-1/4"></div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[1, 2, 3, 4, 5, 6].map(i => (
-              <div key={i} className="aspect-square bg-neutral-medium rounded-lg"></div>
-            ))}
-          </div>
-        </div>
-      </div>
-    )
-  }
-);
-
-const SellerLocationMap = dynamic(
-  () => import('@/components/seller/SellerLocationMap').then(mod => ({ default: mod.SellerLocationMap })),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="bg-white rounded-lg p-8">
-        <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-neutral-medium rounded w-1/4"></div>
-          <div className="h-64 bg-neutral-medium rounded-lg"></div>
-        </div>
-      </div>
-    )
-  }
-);
-
-const Modal = dynamic(
-  () => import('@/components/ui/Modal').then(mod => ({ default: mod.Modal })),
-  { ssr: false }
-);
-
-const EnquiryForm = dynamic(
-  () => import('@/components/forms').then(mod => ({ default: mod.EnquiryForm })),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="p-8">
-        <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-neutral-medium rounded w-3/4"></div>
-          <div className="h-10 bg-neutral-medium rounded"></div>
-          <div className="h-10 bg-neutral-medium rounded"></div>
-          <div className="h-32 bg-neutral-medium rounded"></div>
-        </div>
-      </div>
-    )
-  }
-);
+import { ProductGallery } from '@/components/seller/ProductGallery';
+import { SellerLocationMap } from '@/components/seller/SellerLocationMap';
+import { Modal } from '@/components/ui/Modal';
+import { EnquiryForm } from '@/components/forms/EnquiryForm';
 
 export default function SellerProfilePage() {
   const params = useParams();
