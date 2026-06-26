@@ -68,15 +68,15 @@ export function HeroSection() {
 
             <motion.div variants={staggerItem} className="grid grid-cols-3 gap-8 border-t border-neutral-100 pt-8">
               <div>
-                <div className="text-3xl font-bold text-neutral-900 mb-1">10k+</div>
+                <div className="text-3xl font-bold text-neutral-900 mb-1">100+</div>
                 <div className="text-sm text-neutral-500 font-medium">Active Retailers</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-neutral-900 mb-1">500+</div>
+                <div className="text-3xl font-bold text-neutral-900 mb-1">10+</div>
                 <div className="text-sm text-neutral-500 font-medium">Wholesalers</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-neutral-900 mb-1">₹100Cr</div>
+                <div className="text-3xl font-bold text-neutral-900 mb-1">₹10 Lakh</div>
                 <div className="text-sm text-neutral-500 font-medium">GMV Processed</div>
               </div>
             </motion.div>

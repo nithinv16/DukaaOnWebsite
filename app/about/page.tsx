@@ -34,12 +34,12 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <div className="min-h-[calc(100vh-4rem)] bg-neutral-light">
+      <div className="min-h-[calc(100vh-4rem)] bg-neutral-50">
         {/* Hero Section */}
-        <section ref={heroRef} className="relative bg-gradient-to-br from-primary-dark via-secondary-blue to-primary-dark text-white py-24 overflow-hidden">
+        <section ref={heroRef} className="relative bg-gradient-to-br from-primary-dark via-secondary to-primary-dark text-white py-24 overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-orange rounded-full blur-3xl" />
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-yellow rounded-full blur-3xl" />
           </div>
 
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0 }}
                 animate={isHeroInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-xl text-neutral-light/90 leading-relaxed"
+                className="text-xl text-neutral-50/90 leading-relaxed"
               >
                 DukaaOn is revolutionizing rural retail distribution by connecting retailers,
                 wholesalers, and manufacturers through an AI-powered platform that enables
@@ -88,17 +88,17 @@ export default function AboutPage() {
             >
               {/* Mission */}
               <motion.div variants={staggerItem} className="relative group">
-                <div className="bg-gradient-to-br from-primary-orange/5 to-accent-yellow/5 rounded-2xl p-8 border border-primary-orange/20 hover:shadow-xl transition-shadow duration-300">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary-orange to-accent-yellow rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                <div className="bg-gradient-to-br from-primary/5 to-accent-yellow/5 rounded-2xl p-8 border border-primary/20 hover:shadow-xl transition-shadow duration-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent-yellow rounded-xl flex items-center justify-center mb-6 shadow-lg">
                     <Target className="w-8 h-8 text-white" />
                   </div>
                   <h2 className="text-3xl font-bold text-primary-dark mb-4">Our Mission</h2>
-                  <p className="text-lg text-primary-gray leading-relaxed mb-4">
+                  <p className="text-lg text-neutral-600 leading-relaxed mb-4">
                     To transform rural retail distribution in India by leveraging technology,
                     enabling direct connections between retailers and suppliers, and providing
                     access to credit and financial services.
                   </p>
-                  <p className="text-base text-primary-gray leading-relaxed">
+                  <p className="text-base text-neutral-600 leading-relaxed">
                     We believe every rural retailer deserves access to the same tools and
                     opportunities as their urban counterparts. Through our platform, we&apos;re
                     democratizing access to efficient supply chains, working capital, and
@@ -109,17 +109,17 @@ export default function AboutPage() {
 
               {/* Vision */}
               <motion.div variants={staggerItem} className="relative group">
-                <div className="bg-gradient-to-br from-secondary-blue/5 to-secondary-green/5 rounded-2xl p-8 border border-secondary-blue/20 hover:shadow-xl transition-shadow duration-300">
-                  <div className="w-16 h-16 bg-gradient-to-br from-secondary-blue to-secondary-green rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                <div className="bg-gradient-to-br from-secondary/5 to-accent-teal/5 rounded-2xl p-8 border border-secondary/20 hover:shadow-xl transition-shadow duration-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-secondary to-accent-teal rounded-xl flex items-center justify-center mb-6 shadow-lg">
                     <Lightbulb className="w-8 h-8 text-white" />
                   </div>
                   <h2 className="text-3xl font-bold text-primary-dark mb-4">Our Vision</h2>
-                  <p className="text-lg text-primary-gray leading-relaxed mb-4">
+                  <p className="text-lg text-neutral-600 leading-relaxed mb-4">
                     To become India&apos;s leading tech-enabled distribution and financial inclusion
                     platform for rural and semi-urban markets, serving millions of retailers
                     across the country.
                   </p>
-                  <p className="text-base text-primary-gray leading-relaxed">
+                  <p className="text-base text-neutral-600 leading-relaxed">
                     We envision a future where technology bridges the urban-rural divide,
                     creating sustainable livelihoods and economic prosperity in every corner
                     of India through efficient commerce and financial empowerment.
@@ -161,11 +161,11 @@ export default function AboutPage() {
                     transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
                     className="text-center"
                   >
-                    <div className="w-12 h-12 bg-primary-orange/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-orange">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-primary">
                       {value.icon}
                     </div>
                     <h4 className="font-bold text-primary-dark mb-2">{value.title}</h4>
-                    <p className="text-sm text-primary-gray">{value.description}</p>
+                    <p className="text-sm text-neutral-600">{value.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -174,7 +174,7 @@ export default function AboutPage() {
         </section>
 
         {/* Company Story Section */}
-        <section ref={storyRef} className="py-24 bg-neutral-light">
+        <section ref={storyRef} className="py-24 bg-neutral-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -182,13 +182,13 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <span className="inline-block px-4 py-2 bg-primary-orange/10 rounded-full text-primary-orange text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4">
                 Our Journey
               </span>
               <Heading as="h2" className="mb-6">
                 The DukaaOn Story
               </Heading>
-              <p className="text-xl text-primary-gray max-w-3xl mx-auto">
+              <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
                 Born from a deep understanding of rural retail challenges and a vision
                 to create lasting impact through technology.
               </p>
@@ -197,7 +197,7 @@ export default function AboutPage() {
             {/* Timeline */}
             <div className="relative">
               {/* Vertical line */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-orange via-secondary-blue to-secondary-green" />
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary via-secondary to-accent-teal" />
 
               <div className="space-y-12">
                 {[
@@ -206,28 +206,28 @@ export default function AboutPage() {
                     title: 'Identifying the Gap',
                     description: 'Rural retailers in India face significant challenges: high procurement costs due to multiple intermediaries, limited access to credit, inefficient inventory management, and poor logistics. These issues result in 30-40% higher costs and reduced profitability.',
                     icon: '🔍',
-                    color: 'from-accent-red to-primary-orange',
+                    color: 'from-accent-red to-primary',
                   },
                   {
                     phase: 'The Solution',
                     title: 'Building the Platform',
                     description: 'DukaaOn was created to address these challenges through technology. Our platform connects retailers directly with wholesalers and manufacturers, eliminating intermediaries. We integrated AI-powered tools for inventory management, voice-based ordering in regional languages, and embedded finance for credit access.',
                     icon: '💡',
-                    color: 'from-primary-orange to-accent-yellow',
+                    color: 'from-primary to-accent-yellow',
                   },
                   {
                     phase: 'The Innovation',
                     title: 'Micro-Warehousing Network',
                     description: 'We pioneered a micro-warehousing model that brings inventory closer to rural retailers. This innovation reduces delivery times by 3x and transportation costs significantly, while enabling stock-sharing between retailers for better inventory efficiency.',
                     icon: '🏪',
-                    color: 'from-secondary-blue to-secondary-green',
+                    color: 'from-secondary to-accent-teal',
                   },
                   {
                     phase: 'The Impact',
                     title: 'Transforming Lives',
                     description: 'Today, DukaaOn is empowering rural retailers across India with 40% cost savings, instant credit access up to ₹5 lakhs, and AI-driven insights. We\'re not just building a platform—we\'re creating economic opportunities and financial inclusion in rural India.',
                     icon: '🚀',
-                    color: 'from-secondary-green to-primary-orange',
+                    color: 'from-accent-teal to-primary',
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -238,15 +238,15 @@ export default function AboutPage() {
                     className={`relative md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:ml-auto md:pl-12'}`}
                   >
                     {/* Timeline dot */}
-                    <div className="hidden md:block absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-primary-orange rounded-full z-10" style={{ left: index % 2 === 0 ? 'auto' : '0', right: index % 2 === 0 ? '0' : 'auto' }} />
+                    <div className="hidden md:block absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-primary rounded-full z-10" style={{ left: index % 2 === 0 ? 'auto' : '0', right: index % 2 === 0 ? '0' : 'auto' }} />
 
-                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-neutral-medium/20 hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-neutral-200/20 hover:shadow-xl transition-shadow duration-300">
                       <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${item.color} text-3xl mb-4 shadow-lg`}>
                         {item.icon}
                       </div>
-                      <div className="text-sm font-bold text-primary-orange mb-2">{item.phase}</div>
+                      <div className="text-sm font-bold text-primary mb-2">{item.phase}</div>
                       <h3 className="text-2xl font-bold text-primary-dark mb-3">{item.title}</h3>
-                      <p className="text-primary-gray leading-relaxed">{item.description}</p>
+                      <p className="text-neutral-600 leading-relaxed">{item.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -264,13 +264,13 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <span className="inline-block px-4 py-2 bg-secondary-blue/10 rounded-full text-secondary-blue text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-2 bg-secondary/10 rounded-full text-secondary text-sm font-medium mb-4">
                 Market Opportunity
               </span>
               <Heading as="h2" className="mb-6">
                 A Massive Untapped Market
               </Heading>
-              <p className="text-xl text-primary-gray max-w-3xl mx-auto">
+              <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
                 Rural India represents one of the largest and fastest-growing retail markets
                 in the world, with immense potential for digital transformation.
               </p>
@@ -289,21 +289,21 @@ export default function AboutPage() {
                   label: 'Rural Retail Stores',
                   description: 'Across India',
                   icon: '🏪',
-                  color: 'from-primary-orange to-accent-yellow',
+                  color: 'from-primary to-accent-yellow',
                 },
                 {
                   value: '₹50T',
                   label: 'Market Size',
                   description: 'Rural retail market',
                   icon: '💰',
-                  color: 'from-secondary-blue to-secondary-green',
+                  color: 'from-secondary to-accent-teal',
                 },
                 {
                   value: '65%',
                   label: 'Population',
                   description: 'Lives in rural areas',
                   icon: '👥',
-                  color: 'from-secondary-green to-primary-orange',
+                  color: 'from-accent-teal to-primary',
                 },
                 {
                   value: '15%',
@@ -319,13 +319,13 @@ export default function AboutPage() {
                   whileHover={{ y: -8 }}
                   className="relative group"
                 >
-                  <div className="bg-gradient-to-br from-neutral-light to-white rounded-2xl p-6 border border-neutral-medium/20 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="bg-gradient-to-br from-neutral-50 to-white rounded-2xl p-6 border border-neutral-200/20 shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center text-2xl mb-4 shadow-md`}>
                       {stat.icon}
                     </div>
                     <div className="text-4xl font-bold text-primary-dark mb-2">{stat.value}</div>
                     <div className="text-lg font-semibold text-primary-dark mb-1">{stat.label}</div>
-                    <div className="text-sm text-primary-gray">{stat.description}</div>
+                    <div className="text-sm text-neutral-600">{stat.description}</div>
                   </div>
                 </motion.div>
               ))}
@@ -336,10 +336,10 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={isMarketInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="bg-gradient-to-br from-primary-dark to-secondary-blue rounded-3xl p-12 text-white relative overflow-hidden"
+              className="bg-gradient-to-br from-primary-dark to-secondary rounded-3xl p-12 text-white relative overflow-hidden"
             >
               {/* Background decoration */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-orange/20 rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-yellow/20 rounded-full blur-3xl" />
 
               <div className="relative z-10">
@@ -351,17 +351,17 @@ export default function AboutPage() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-xl font-bold mb-4">Growing Digital Adoption</h4>
-                    <ul className="space-y-3 text-neutral-light/90">
+                    <ul className="space-y-3 text-neutral-50/90">
                       <li className="flex items-start gap-3">
-                        <span className="text-secondary-green text-xl">✓</span>
+                        <span className="text-accent-teal text-xl">✓</span>
                         <span>Smartphone penetration in rural areas has reached 45% and growing rapidly</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="text-secondary-green text-xl">✓</span>
+                        <span className="text-accent-teal text-xl">✓</span>
                         <span>Internet connectivity improving with government initiatives like BharatNet</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="text-secondary-green text-xl">✓</span>
+                        <span className="text-accent-teal text-xl">✓</span>
                         <span>Digital payment adoption accelerated by UPI and mobile wallets</span>
                       </li>
                     </ul>
@@ -369,17 +369,17 @@ export default function AboutPage() {
 
                   <div>
                     <h4 className="text-xl font-bold mb-4">Market Dynamics</h4>
-                    <ul className="space-y-3 text-neutral-light/90">
+                    <ul className="space-y-3 text-neutral-50/90">
                       <li className="flex items-start gap-3">
-                        <span className="text-secondary-green text-xl">✓</span>
+                        <span className="text-accent-teal text-xl">✓</span>
                         <span>Rising disposable incomes in rural households driving consumption</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="text-secondary-green text-xl">✓</span>
+                        <span className="text-accent-teal text-xl">✓</span>
                         <span>Government focus on rural development and financial inclusion</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="text-secondary-green text-xl">✓</span>
+                        <span className="text-accent-teal text-xl">✓</span>
                         <span>Increasing demand for organized retail and quality products</span>
                       </li>
                     </ul>
@@ -391,7 +391,7 @@ export default function AboutPage() {
         </section>
 
         {/* Problem Statement & Solution */}
-        <section className="py-24 bg-neutral-light">
+        <section className="py-24 bg-neutral-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Problem Statement */}
@@ -401,7 +401,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="bg-white rounded-2xl p-8 shadow-lg border border-neutral-medium/20 h-full">
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-neutral-200/20 h-full">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-accent-red/10 rounded-lg flex items-center justify-center">
                       <span className="text-2xl">⚠️</span>
@@ -409,7 +409,7 @@ export default function AboutPage() {
                     <h3 className="text-2xl font-bold text-primary-dark">The Challenge</h3>
                   </div>
 
-                  <p className="text-lg text-primary-gray mb-6 leading-relaxed">
+                  <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
                     Rural retailers face systemic challenges that limit their growth and profitability:
                   </p>
 
@@ -424,7 +424,7 @@ export default function AboutPage() {
                     ].map((problem, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <span className="text-accent-red text-xl flex-shrink-0">✗</span>
-                        <span className="text-primary-gray">{problem}</span>
+                        <span className="text-neutral-600">{problem}</span>
                       </li>
                     ))}
                   </ul>
@@ -438,7 +438,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="bg-gradient-to-br from-primary-dark to-secondary-blue rounded-2xl p-8 shadow-xl text-white h-full">
+                <div className="bg-gradient-to-br from-primary-dark to-secondary rounded-2xl p-8 shadow-xl text-white h-full">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center backdrop-blur-sm">
                       <span className="text-2xl">✨</span>
@@ -460,7 +460,7 @@ export default function AboutPage() {
                       'Real-time analytics and business intelligence dashboard',
                     ].map((solution, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <span className="text-secondary-green text-xl flex-shrink-0">✓</span>
+                        <span className="text-accent-teal text-xl flex-shrink-0">✓</span>
                         <span className="text-white/90">{solution}</span>
                       </li>
                     ))}
@@ -472,7 +472,7 @@ export default function AboutPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-24 bg-gradient-to-br from-primary-orange to-accent-yellow">
+        <section className="py-24 bg-gradient-to-br from-primary to-accent-yellow">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -491,7 +491,7 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/marketplace"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-orange font-semibold rounded-lg hover:bg-neutral-light transition-colors shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-neutral-50 transition-colors shadow-lg"
                 >
                   Explore Marketplace
                 </a>
